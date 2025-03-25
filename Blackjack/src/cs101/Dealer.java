@@ -1,9 +1,6 @@
 package cs101;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Dealer {
 
@@ -20,6 +17,7 @@ public class Dealer {
 		int index = 0;
 
 		String[] suites = { "HEARTS", "CLUBS", "DIAMONDS", "SPADES" };
+		String[] varients = { "JACK", "QUEEN", "KING", "ACE" };
 
 		for (int s = 0; s < suites.length; s++) {
 
@@ -33,27 +31,22 @@ public class Dealer {
 			}
 
 			// add face cards, aces
-			this.deck[index] = suites[s] + " JACK";
-			index++;
-			this.deck[index] = suites[s] + " QUEEN";
-			index++;
-			this.deck[index] = suites[s] + " KING";
-			index++;
-			this.deck[index] = suites[s] + " ACE";
-			index++;
-
+			for (String varient : varients) {
+				this.deck[index] = suites[s] + " " + varient;
+				index++;
+			}
 		}
 
-		this.shuffle();
+		this.shuffle(this.deck.length);
 		// System.out.println(Arrays.toString(this.deck));
 
 	}
 
-	public void shuffle() {
+	public void shuffle(int count) {
 
 		Random rand = new Random();
 
-		for (int e = 0; e < this.deck.length; e++) {
+		for (int e = 0; e < count; e++) {
 
 			int random_index = rand.nextInt(this.deck.length);
 
@@ -66,24 +59,14 @@ public class Dealer {
 	}
 
 	// Don't call shuffle between!
-	public String[] dealTwo() {
+	public String[] deal(int count) {
 
-		String[] dealt = new String[2];
+		String[] dealt = new String[count];
 
-		dealt[0] = this.deck[this.dealingIndex];
-		this.dealingIndex++;
-
-		dealt[1] = this.deck[this.dealingIndex];
-		this.dealingIndex++;
-
-		return dealt;
-
-	}
-
-	public String dealOne() {
-
-		String dealt = this.deck[this.dealingIndex];
-		this.dealingIndex++;
+		for (int i = 0; i < count; i++) {
+			dealt[i] = this.deck[this.dealingIndex];
+			this.dealingIndex++;
+		}
 
 		return dealt;
 
