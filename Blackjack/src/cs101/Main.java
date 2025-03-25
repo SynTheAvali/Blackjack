@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		print.clear();
+		utility.clear();
 
 		System.out.println("You're gambling your life's posessions away");
 		System.out.println("Your car, your house, everything that has value to you.");
@@ -36,7 +36,7 @@ public class Main {
 		int dealerValue = getHandValue(dealerCards);
 		int playerValue = getHandValue(playerCards);
 
-		print.line();
+		utility.line();
 
 		System.out.println("Your Deck is " + Arrays.toString(playerCards));
 		System.out.println("Value: " + getHandValue(playerCards));

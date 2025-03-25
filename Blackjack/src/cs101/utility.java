@@ -1,6 +1,6 @@
 package cs101;
 
-public class print {
+public class utility {
     public static void line() {
         System.out.println("");
         System.out.println("-----------------------------------");
